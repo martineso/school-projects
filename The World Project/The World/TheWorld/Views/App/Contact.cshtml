@@ -1,0 +1,42 @@
+﻿@model TheWorld.ViewModels.ContactViewModel
+@{
+    ViewBag.Title = "Contact";
+    ViewBag.CurrentTab = "Contact";
+}
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/js/site.js"></script>
+}
+
+<div class="row">
+<div class="col-md-8 col-md-offset-2" id="contact-wrapper">
+    <form method="post">
+
+        <h1>Contact</h1>
+        <div asp-validation-summary="ModelOnly"></div>
+        @if (ViewBag.UserMessage != null)
+        {
+            <div>@ViewBag.UserMessage</div>
+        }
+        <div class="form-group">
+            <label asp-for="Name">Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input type="email" asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Message">Message</label>
+            <textarea cols="40" rows="4" asp-for="Message" class="form-control"></textarea>
+            <span asp-validation-for="Message" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Send Message" class="btn btn-success" />
+        </div>
+    </form>
+</div>
+</div>

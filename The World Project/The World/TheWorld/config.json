@@ -1,0 +1,8 @@
+{
+  "MailSettings": {
+    "ToAddress": "m.kontilov@gmail.com"
+  },
+  "Connections": {
+    "DbConnection": "Server=(localdb)\\MSSQLLocalDB;Database=PortfolioDB;Trusted_Connection=true;MultipleActiveResultSets=true"
+  }
+}

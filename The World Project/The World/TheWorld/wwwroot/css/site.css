@@ -1,0 +1,44 @@
+body {
+    padding-bottom: 70px;
+}
+
+#container-body {
+    padding-top: 70px;
+}
+
+#thumb-pic {
+    width: 50px;
+    height: 50px;
+    margin: 2px;
+    box-shadow: rgba(0,0,0, 0.8), 20px 10px;
+}
+
+    #navbar-collapse {
+        text-align: center;
+    }
+   
+    .m-navbar-active {
+        background-color: red;
+    }
+
+/*#gallery-wrapper {
+    float: none;
+    padding: 0px;
+}
+*/
+#login-view {
+    float: none;
+    margin: 2%  auto;
+}
+
+.comment-section { 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+    #text-style {
+        color: black;
+    }
+    .comment-section li:last-child {
+        margin-top: 15px;
+    }

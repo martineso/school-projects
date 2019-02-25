@@ -1,0 +1,47 @@
+ <div class="row col-md-4 col-sm-10 col-sm-offset-1 col-md-offset-4">
+    <form action="<% form_action %>" method="POST">
+        <fieldset>
+            <legend><% heading %></legend>
+            <div class="form-group">
+                <% IF session.error_message %>
+                <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    <% error_message %>
+                </div>
+                <% END %>
+            </div>
+            <div class="form-group">
+                <input class="form-control" 
+                       type="text" 
+                       name="username"
+                       id="name" placeholder="username" required/>
+            </div>
+            <div class="form-group">
+                <input class="form-control" 
+                        type="email" 
+                        id="email" 
+                        name="email_address"
+                        placeholder="e-mail address" required/>
+            </div>
+            <div class="form-group">
+                <input class="form-control" 
+                        id="password" 
+                        type="password" 
+                        name="password"
+                        placeholder="password" required/>
+            </div>
+            <div class="form-group">
+                <input  class="form-control" 
+                        id="confirm_password" 
+                        type="password" 
+                        placeholder="confirm password" required/>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block btn-lg">submit</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<script src="<% validation_script %>"></script>

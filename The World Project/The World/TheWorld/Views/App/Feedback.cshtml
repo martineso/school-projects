@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TheWorld.Models.Comment>
+
+@{
+    ViewBag.Title = "Feedback";
+    ViewBag.CurrentTab = "Feedback";
+}
+@section Scripts {
+    <script src="~/lib/angular/angular.min.js"></script>
+    <script src="~/js/simpleControls.js"></script>
+    <script src="~/js/app-comment.js"></script>
+    <script src="~/js/commentsController.js"></script>
+    <script src="~/js/site.js"></script>
+}
+<div class="row">
+<div class="col-md-8 col-md-offset-2" ng-app="app-comment" id="comments-wrapper">
+    
+    <div ng-controller="commentsController as vm">
+        <h2>Comments</h2>
+        <div class="text-danger" ng-show="vm.errorMessage">{{ vm.errorMessage }}</div>
+        <wait-cursor display-when="vm.isBusy"></wait-cursor>
+
+        <ul ng-repeat="comment in vm.comments" class="comment-section">
+            <li>
+                <div class="text-danger"><span id="text-style">by </span>{{ comment.userName }}</div>
+            </li>
+            <li>
+                <div class="text-danger"><span id="text-style">on </span>{{ comment.datePosted | date:'MM-dd-yyyy' }}</div>
+            </li>
+            <li>
+                <div>{{ comment.userComment }}</div>
+                <hr />
+            </li>
+        </ul>
+
+        <form novalidate name="newCommentForm" ng-submit="vm.addComment()">
+            <div class="form-group">
+                <label for="comment">Comment</label>
+                <textarea cols="40" rows="4" class="form-control" type="text" id="comment" name="comment" 
+                          ng-model="vm.newComment.userComment" required ng-minlength="5"></textarea>
+                <span ng-show="newCommentForm.userComment.$error.required" class="text-warning">
+                    Comment is required!
+                </span>
+                <span ng-show="newCommentForm.userComment.$error.minlength" class="text-warning">
+                    Comment must be at least 3 characters long!
+                </span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Post"
+                       class="btn btn-success btn-sm"
+                       ng-disabled="newCommentForm.$invalid" />
+            </div>
+        </form>
+    </div>
+</div>
+</div>

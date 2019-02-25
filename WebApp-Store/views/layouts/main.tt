@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="<% settings.charset %>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title><% title %></title>
+  <link rel="stylesheet" 
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+        crossorigin="anonymous">
+  <link rel="stylesheet" 
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" 
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="<% request.uri_base %>/css/style.css">
+  <link rel="stylesheet" href="<% modal_css %>">
+  <link rel="stylesheet" href=" <% request.uri_base %>/css/spinner.css ">
+
+  <!-- SCRIPTS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js" integrity="sha256-zBy1l2WBAh2vPF8rnjFMUXujsfkKjya0Jy5j6yKj0+Q="
+    crossorigin="anonymous">
+  </script>
+
+</head>
+  <body ng-app="store-app">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Store</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="menu-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/" class="text-center">Home</a></li>
+            <% IF session.is_employee %>
+              <li><a href="/emp/<% session.user_id %>/products" class="text-center">Products</a></li> 
+            <% ELSE %>
+              <li><a href="/products" class="text-center">Products</a></li>
+              <li>
+                <a href="/cart" class="text-center">
+                  <span class="glyphicon glyphicon-shopping-cart"></span>
+                  <span class="badge" id="cart-items-count"><% session.cart_items_count %></span>
+                </a>
+              </li>
+            <% END %>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% IF not session.logged_in %>
+              <li><a class="text-center" href="/login">Login <span class="glyphicon glyphicon-log-in"></span></a></li>
+              <li><a class="text-center" href="/register">Register <span class="glyphicon glyphicon-sign-up"></span></a></li>
+              <!-- Display username and logout button -->
+            <% ELSE %>
+              <li><p class="navbar-text text-center"><% session.username %>  <span class="glyphicon glyphicon-user"></span></p></li>
+              <li><a href="/logout" class="text-center">logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+          </ul>
+            <% END %>
+          <div class="navbar-form navbar-right">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+              </span>
+            </div><!-- /input-group -->
+          </div>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container-fluid">
+      <% content %>
+    </div>
+
+    <footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+                crossorigin="anonymous"></script>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+
+<div class="row">
+    <div class="col-md-8 col-sm-6">
+        <img src="<% landing_page_img_url %>" class="img-responsive">
+    </div>
+    <div class="col-md-4">
+        <div class="headings">
+            <h1>
+                <strong>CI Store</strong><br />
+                Smartphones, accessories <br/>
+                <strong>and </strong> more
+            </h1>
+            <p>We offer a wide variety of smartphones as well as accessories
+                at <strong>affordable</strong> prices!</p>
+            
+        </div>
+        <a class="btn btn-primary" href="<% products_url %>"> View products</a>
+    </div>
+</div>
